@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Download JSON</title>
+    <title>HWID Values</title>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            font-size: 20px; /* Adjust font size as needed */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
     <script>
-        // JSON data to be downloaded
         const hwids = [
             "HWID1",
             "HWID2",
@@ -12,33 +26,15 @@
             "HWID5"
         ];
 
-        function downloadJSON() {
-            const json = JSON.stringify(hwids, null, 2);
-            const blob = new Blob([json], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'hwids.json';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-
-        // Automatically trigger the download when the page loads
-        window.onload = downloadJSON;
-        
-        // Access the data from the website
-        function accessData() {
-            console.log('HWIDs:', hwids);
-        }
-
-
-        window.onload = function() {
-            downloadJSON();
-            accessData();
-        };
+        hwids.forEach(hwid => {
+            const p = document.createElement('p');
+            p.textContent = hwid;
+            document.body.appendChild(p);
+        });
     </script>
-</head>
+</body>
+</html>
+
 <body>
 </body>
 </html>

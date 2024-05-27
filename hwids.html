@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download JSON</title>
+    <script>
+        // JSON data to be downloaded
+        const hwids = [
+            "HWID1",
+            "HWID2",
+            "HWID3",
+            "HWID4",
+            "HWID5"
+        ];
+
+        function downloadJSON() {
+            const json = JSON.stringify(hwids, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'hwids.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        // Automatically trigger the download when the page loads
+        window.onload = downloadJSON;
+        
+        // Access the data from the website
+        function accessData() {
+            console.log('HWIDs:', hwids);
+        }
+
+
+        window.onload = function() {
+            downloadJSON();
+            accessData();
+        };
+    </script>
+</head>
+<body>
+</body>
+</html>

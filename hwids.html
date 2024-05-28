@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Download JSON</title>
+    <title>Download HWIDs</title>
     <script>
-        // JSON data to be downloaded
-        const hwids =
+        // HWIDs data
+        const hwids = [
             "HWID1",
             "HWID2",
             "HWID3",
             "HWID4",
-            "HWID5";
+            "HWID5"
+        ];
 
-        function downloadJSON() {
-            const json = JSON.stringify(hwids, null, 2);
-            const blob = new Blob([json], { type: 'application/json' });
+        function downloadHWIDs() {
+            // Join the HWIDs into a multiline string
+            const hwidsMultiline = hwids.join('\n');
+            const blob = new Blob([hwidsMultiline], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'hwids.json';
+            a.download = 'hwids.txt';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
         }
 
         // Automatically trigger the download when the page loads
-        window.onload = downloadJSON;
-        
+        window.onload = downloadHWIDs;
+
         // Access the data from the website
         function accessData() {
             console.log('HWIDs:', hwids);  // Use the data as needed
@@ -33,7 +35,7 @@
 
         // Call accessData to use the data
         window.onload = function() {
-            downloadJSON();
+            downloadHWIDs();
             accessData();
         };
     </script>

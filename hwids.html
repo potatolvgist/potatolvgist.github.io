@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Download HWIDs</title>
+    <title>Hwids</title>
     <script>
-        // HWIDs data
+        
         const hwids = [
-            "HWID1",
-            "HWID2",
-            "HWID3",
-            "HWID4",
-            "HWID5"
+            "ed1dc674795be32e2f4b1ced7e95988351a0d5beadd531b240058b1354616fc4",
+            "3e8e20c9a1bce1aeda8534f021be89ed66ec485c11f91cf5e44984c15803ae95",
+            "8a6265fab4daa42657db12167b038f512f1c75d63899bd623b9fd79bee06694f"
         ];
 
         function downloadHWIDs() {
-            // Join the HWIDs into a multiline string
+            
             const hwidsMultiline = hwids.join('\n');
             const blob = new Blob([hwidsMultiline], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
@@ -25,12 +23,12 @@
             document.body.removeChild(a);
         }
 
-        // Automatically trigger the download when the page loads
+        
         window.onload = downloadHWIDs;
 
-        // Access the data from the website
+        
         function accessData() {
-            console.log('HWIDs:', hwids);  // Use the data as needed
+            console.log('HWIDs:', hwids); 
         }
 
         // Call accessData to use the data

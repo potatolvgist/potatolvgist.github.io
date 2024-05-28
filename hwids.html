@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HWID Values</title>
-    <link rel="stylesheet" type="text/css" href="/path/to/styles.css">
-</head>
-<body class="hwids-page">
+    <title>Hwids</title>
     <script>
-        const hwids = [
+        const hwids =
             "HWID1",
             "HWID2",
             "HWID3",
             "HWID4",
             "HWID5"
-        ];
+        ;
 
-        hwids.forEach(hwid => {
-            const p = document.createElement('p');
-            p.textContent = hwid;
-            document.body.appendChild(p);
-        });
+        function downloadJSON() {
+            const json = JSON.stringify(hwids, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'hwids.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        window.onload = downloadJSON;
+        
+
+        function accessData() {
+            console.log('HWIDs:', hwids);
+        }
+
+
+        window.onload = function() {
+            downloadJSON();
+            accessData();
+        };
     </script>
+</head>
+<body>
 </body>
 </html>

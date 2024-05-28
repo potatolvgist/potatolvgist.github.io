@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hwids</title>
+    <title>Download JSON</title>
     <script>
-        const hwids =
+        // JSON data to be downloaded
+        const hwids = [
             "HWID1",
             "HWID2",
             "HWID3",
             "HWID4",
             "HWID5"
-        ;
+        ];
 
         function downloadJSON() {
             const json = JSON.stringify(hwids, null, 2);
@@ -23,14 +24,15 @@
             document.body.removeChild(a);
         }
 
+        // Automatically trigger the download when the page loads
         window.onload = downloadJSON;
         
-
+        // Access the data from the website
         function accessData() {
-            console.log('HWIDs:', hwids);
+            console.log('HWIDs:', hwids);  // Use the data as needed
         }
 
-
+        // Call accessData to use the data
         window.onload = function() {
             downloadJSON();
             accessData();
